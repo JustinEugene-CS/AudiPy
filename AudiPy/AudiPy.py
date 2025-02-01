@@ -19,7 +19,11 @@ class AudiPy():
         matrix = self.input.take_file(filename)
         return matrix
     
-    def convert_to_audio(self, data, min_freq, max_freq, time, sound = None, ascending = None):
-        matrix = self.scalar.normalize_twelve_tone(data, min_freq, max_freq)
+    def convert_to_audio(self, data, min_freq, max_freq, time, modal, ascending = None):
+        if modal:
+            matrix = self.scalar.normalize_modal(data, min_freq, max_freq)
+        else:
+            matrix = self.scalar.normalize_twelve_tone(data, min_freq, max_freq)
+            
         wave = self.generator.data_matrix(matrix, time)
         return self.output.write(wave)

@@ -20,6 +20,23 @@ class StandardScalar:
     def normalize_twelve_tone(self, data, minf=None, maxf=None):
         return np.multiply(63, np.power(2,np.divide(data,12)))
 
+    # normalize to modal
+    def normalize_modal(self, data, minf=None, maxf=None):
+        MODAL_VALUE = [0, 2, 4, 5, 7, 9, 11]
+        final = []
+        for channel in data:
+            channel_sine_wave = []
+            for value in channel:
+                quantized = int(value)
+                if quantized % 12 in MODAL_VALUE:
+                    sin_value = np.multiply(63, np.power(2,np.divide(quantized,12)))
+                else:
+                    quantized += 1
+                    sin_value = np.multiply(63, np.power(2,np.divide(quantized,12)))
+                channel_sine_wave.append(sin_value)
+            final.append(channel_sine_wave)
+        return final
+
     # normalize by scaled
     def normalize_scaled(self, data, minf, maxf):
         return np.subtract(data,np.min(data)) / np.subtract(np.max(data),np.min(data)) * ((maxf-minf)) + minf

@@ -46,6 +46,8 @@ class AudiPy():
             matrix = self.scalar.normalize_modal(data, MODAL_VALUE, min_freq, max_freq)
         else:
             matrix = self.scalar.normalize_twelve_tone(data, min_freq, max_freq)
-            
+
+        matrix = (np.subtract(matrix, np.min(matrix)) / np.subtract(np.max(matrix), np.min(matrix))) * ((max_freq-min_freq) + min_freq)
+        
         wave = self.generator.data_matrix(matrix, time)
         return self.output.write(wave)

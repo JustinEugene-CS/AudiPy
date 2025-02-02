@@ -26,12 +26,17 @@ jobs:
           
       - name: Auto-increment Version
         run: |
-          awk -F' '/version=/ {print $2}' setup.py > old_version.txt
-          OLD_VERSION=$(cat old_version.txt)
+          VERSION_FILE="setup.py"
+          OLD_VERSION=$(grep -oP "(?<=version=')[^']+" $VERSION_FILE)
           NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF = $NF + 1;} 1' OFS=.)
-          sed -i "s/version='$OLD_VERSION'/version='$NEW_VERSION'/" setup.py
+          sed -i "s/version='$OLD_VERSION'/version='$NEW_VERSION'/" $VERSION_FILE
           echo "New version: $NEW_VERSION"
-
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add $VERSION_FILE
+          git commit -m "Bump version to $NEW_VERSION"
+          git push
+          
       - name: Clean Old Builds  # ✅ This ensures old versions don't interfere
         run: |
           rm -rf dist/ build/ *.egg-info/

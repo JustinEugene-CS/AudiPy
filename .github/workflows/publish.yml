@@ -31,8 +31,8 @@ jobs:
           NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF = $NF + 1;} 1' OFS=.)
           sed -i "s/version='$OLD_VERSION'/version='$NEW_VERSION'/" $VERSION_FILE
           echo "New version: $NEW_VERSION"
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "RobertNickStephens"
+          git config --global user.email "rns3z@mtmail.mtsu.edu"
           git add $VERSION_FILE
           git commit -m "Bump version to $NEW_VERSION"
           git push

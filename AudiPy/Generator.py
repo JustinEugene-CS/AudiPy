@@ -7,7 +7,7 @@ class Generator:
     def __call__(self):
         return
 
-    def data_matrix(self, array, time):
+    def data_matrix(self, array, time=10):
         SAMPLE_RATE = 44100 
         # calculate sample steps
         ns = np.linspace(0., time, SAMPLE_RATE * time)

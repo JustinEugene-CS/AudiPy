@@ -8,11 +8,11 @@ class Output:
     def __call__(self):
         return
     
-    def write(self, Data):
-        
+    def write(self, Data, filename="AudiPy"):
+
         # sample rate
         SAMPLE_RATE = 44100                
 
         Transposed = Data.T
 
-        write("example.wav", SAMPLE_RATE, Transposed.astype(np.float32))
+        write(filename + ".wav", SAMPLE_RATE, Transposed.astype(np.float32))

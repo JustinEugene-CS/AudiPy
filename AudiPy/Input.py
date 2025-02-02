@@ -8,7 +8,7 @@ class Input:
     def __init__(self):
         return
 
-    def take_file(self, filename, image_direction = "Left"):
+    def take_file(self, filename, image_direction = "Right"):
         file_ext = os.path.splitext(filename)[1].lower()
 
         if file_ext in [".csv"]:

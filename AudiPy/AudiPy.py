@@ -19,7 +19,7 @@ class AudiPy():
         matrix = self.input.take_file(filename, image_direction)
         return matrix
     
-    def convert_to_audio(self, data, mode, min_freq, max_freq, time):
+    def convert_to_audio(self, data, mode=None, min_freq=20, max_freq=4000, time=10):
         if mode == "Ionian" or mode == "Major":
             MODAL_VALUE = [0, 2, 4, 5, 7, 9, 11]
             matrix = self.scalar.normalize_modal(data, MODAL_VALUE, min_freq, max_freq)

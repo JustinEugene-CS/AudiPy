@@ -31,6 +31,10 @@ jobs:
           NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF = $NF + 1;} 1' OFS=.)
           sed -i "s/version='$OLD_VERSION'/version='$NEW_VERSION'/" setup.py
           echo "New version: $NEW_VERSION"
+
+      - name: Clean Old Builds  # ✅ This ensures old versions don't interfere
+        run: |
+          rm -rf dist/ build/ *.egg-info/
       
       - name: Build Package
         run: python -m build

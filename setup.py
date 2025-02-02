@@ -11,6 +11,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         'numpy'
+        'scipy'
+        'opencv-python'
                       ],
     # python_requires='>=3.6',
 )

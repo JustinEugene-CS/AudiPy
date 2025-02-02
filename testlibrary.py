@@ -14,5 +14,5 @@ test4 = np.array([test, test2], dtype=object)
 
 t = 10
 preprocess = Audi.pre_process(filename="C:\\Users\\Cayden\\Downloads\\Save_webP\\parabola.csv")
-final = Audi.convert_to_audio(data=preprocess, min_freq=20, max_freq=4000, time=t, modal=True)
+final = Audi.convert_to_audio(data=preprocess, min_freq=20, max_freq=4000, time=t, mode="Major")
 

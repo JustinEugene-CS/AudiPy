@@ -1,4 +1,4 @@
-name: Publish Python Package to TestPyPI
+name: Publish Python Package to PyPI
 
 permissions: write-all
   
@@ -46,8 +46,8 @@ jobs:
       - name: Build Package
         run: python -m build
 
-      - name: Publish to TestPyPI
+      - name: Pypi Official Token
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: pypi-AgENdGVzdC5weXBpLm9yZwIkZDFjZmE4YzctMmEwNi00MjhlLWE0ODktZDhiNTEwZDc1ZTc4AAIqWzMsImJjZmUzNWFjLTExN2MtNGRiYS05YTljLWY3YzAwYjRkN2EzZSJdAAAGIHDXU-oVXV48ia9ScMwDaUp3VfvT8-J-Yxl6V7NGLvtp
-        run: twine upload --repository testpypi dist/*
+          TWINE_PASSWORD: ${{ secrets.PYPI_KEY }}
+        run: twine upload --repository pypi dist/*

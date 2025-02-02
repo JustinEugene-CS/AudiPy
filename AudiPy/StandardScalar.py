@@ -21,8 +21,7 @@ class StandardScalar:
         return np.multiply(63, np.power(2,np.divide(data,12)))
 
     # normalize to modal
-    def normalize_modal(self, data, minf=None, maxf=None):
-        MODAL_VALUE = [0, 2, 4, 5, 7, 9, 11]
+    def normalize_modal(self, data, MODAL_VALUE, minf=None, maxf=None):
         final = []
         for channel in data:
             channel_sine_wave = []

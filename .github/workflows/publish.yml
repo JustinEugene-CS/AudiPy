@@ -1,5 +1,9 @@
 name: Publish Python Package to TestPyPI
 
+permissions:
+  contents: read
+  pages: write
+  
 on:
   push:
     branches:

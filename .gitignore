@@ -6,3 +6,5 @@ __pycache__/
 *.wav
 testlibrary.py
 test.py
+
+*.env

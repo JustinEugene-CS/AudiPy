@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='AudiPy',
-    version='0.5',
+    version='0.6',
     description='A simple audio file reader',
     long_description='A simple audio file reader',
     author='Nick Stephens, Group 10 hackMT 2025',

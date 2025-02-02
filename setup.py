@@ -10,8 +10,8 @@ setup(
     url='https://github.com/JustinEugene-CS/AudiPy',
     packages=find_packages(),
     install_requires=[
-        'numpy'
-        'scipy'
+        'numpy',
+        'scipy',
         'opencv-python'
                       ],
     # python_requires='>=3.6',

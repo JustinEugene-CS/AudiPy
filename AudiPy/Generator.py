@@ -17,10 +17,9 @@ class Generator:
         sample_size = int(len(ns)/len(array[0]))
 
         #Nyquist Theorem
-        for channel in array:
-            if SAMPLE_RATE <= max(channel) * 2:
-                print("Nyquist Theorem is failed!")
-                quit
+        if SAMPLE_RATE <= np.max(channel) * 2:
+            print("Nyquist Theorem is failed!")
+            quit()
 
         converted_music = []
 

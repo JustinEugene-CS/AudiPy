@@ -9,33 +9,28 @@ class Input:
         return
 
     def take_file(self, filename, image_direction = "Left"):
-        print("yuh")
         file_ext = os.path.splitext(filename)[1].lower()
 
         if file_ext in [".csv"]:
             array = self.read_dataset_csv(filename)
-            #array = wrapcsv(array)
             return array
         elif file_ext in [".jpg", ".png"]:
             array = self.read_dataset_img(filename, image_direction)
-            #array = wrapimg(array)
             return array
         else:
             raise ValueError("Error, file type not matching")
         
 
-    # Input for CSV files that will convert to numpy files for processing
+    # input for csv files that will convert to numpy files for processing
     def read_dataset_csv(self, filename):
-        print("reading csv")
         data = np.loadtxt(filename, delimiter= ",")
-
-        # Return the data set of numpy
+        # return the transposed data
         return data.T
 
     # load the image and convert into numpy array of avg
     # of r g b values
     def read_dataset_img(self, imgName, direction="Right"):
-        # Used to convert images to a numpy array
+        # used to convert images to a numpy array
 
         image = cv2.imread(imgName)
 

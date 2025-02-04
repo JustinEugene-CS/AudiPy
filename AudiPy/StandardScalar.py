@@ -1,4 +1,3 @@
-from scipy.io.wavfile import write
 import numpy as np
 
 class StandardScalar:
@@ -18,10 +17,21 @@ class StandardScalar:
 
     # normalize to twelve tone
     def normalize_twelve_tone(self, data, minf=None, maxf=None):
+        min_input = 12 * np.log2(minf / 63)
+        max_input = 12 * np.log2(maxf / 63)
+
+        data = np.subtract(data, np.min(data)) / np.subtract(np.max(data), np.min(data)) * (
+        (max_input - min_input)) + min_input
+
         return np.multiply(63, np.power(2,np.divide(data,12)))
 
     # normalize to modal
     def normalize_modal(self, data, MODAL_VALUE, minf=None, maxf=None):
+        min_input = 12 * np.log2(minf/63)
+        max_input = 12 * np.log2(maxf/63)
+
+        data  = np.subtract(data,np.min(data)) / np.subtract(np.max(data),np.min(data)) * (max_input-min_input) + min_input
+
         final = []
         for channel in data:
             channel_sine_wave = []

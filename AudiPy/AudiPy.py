@@ -47,5 +47,5 @@ class AudiPy():
         else:
             matrix = self.scalar.normalize_twelve_tone(data, min_freq, max_freq)
         
-        wave = self.generator.data_matrix(matrix, time)
-        return self.output.write(wave)
+        normalized = self.generator.data_matrix(matrix, time)
+        return self.output.write(normalized)
